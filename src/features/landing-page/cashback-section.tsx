@@ -81,7 +81,7 @@ export default function CashbackSection() {
               >
                 <div className="relative mx-auto h-[240px] w-full sm:h-[280px] md:mx-0 md:h-[320px] lg:h-[360px] xl:h-[400px] overflow-visible">
                   <Image
-                    src="/business-man.png"
+                    src="/assets/images/home-2/business-man.png"
                     alt="Businessman holding cash"
                     fill
                     priority
