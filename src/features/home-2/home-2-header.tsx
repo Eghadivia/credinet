@@ -18,7 +18,7 @@ const navLinks = [
 
 export default function Home2Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-black/5 bg-white/95 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0B014B] backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/home-2" className="flex items-center">
           <img
@@ -28,16 +28,16 @@ export default function Home2Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-10 text-[15px] font-medium text-[#191919] lg:flex">
+        <nav className="hidden items-center gap-10 text-[15px] font-medium text-white lg:flex">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="transition hover:text-[#ff4d54]">
+            <a key={link.href} href={link.href} className="transition hover:text-[#ffd7f2]">
               {link.label}
             </a>
           ))}
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <Link href="/login" className="text-[15px] font-medium text-[#191919] underline-offset-4 hover:underline">
+          <Link href="/login" className="text-[15px] font-medium text-white underline-offset-4 hover:underline">
             Sign in
           </Link>
           <Link
@@ -49,7 +49,7 @@ export default function Home2Header() {
         </div>
 
         <div className="flex items-center gap-3 lg:hidden">
-          <Link href="/login" className="text-sm font-medium text-[#191919]">
+          <Link href="/login" className="text-sm font-medium text-white">
             Sign in
           </Link>
           <Link
@@ -63,14 +63,14 @@ export default function Home2Header() {
               <button
                 type="button"
                 aria-label="Open menu"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#ebeaf3] text-[#191919]"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white"
               >
                 <Menu className="h-5 w-5" />
               </button>
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-[88%] max-w-80 border-l border-[#ece8f7] bg-white p-0"
+              className="w-[88%] max-w-80 border-l border-white/10 bg-[#0B014B] p-0"
             >
               <div className="flex h-full flex-col px-6 py-8">
                 <img
@@ -83,7 +83,7 @@ export default function Home2Header() {
                     <SheetClose asChild key={link.href}>
                       <a
                         href={link.href}
-                        className="rounded-2xl border border-[#f0edf8] px-4 py-4 text-base font-semibold text-[#191919]"
+                        className="rounded-2xl border border-white/10 px-4 py-4 text-base font-semibold text-white"
                       >
                         {link.label}
                       </a>
@@ -94,7 +94,7 @@ export default function Home2Header() {
                   <SheetClose asChild>
                     <Link
                       href="/login"
-                      className="inline-flex h-12 items-center justify-center rounded-full border border-[#ece8f7] text-sm font-semibold text-[#191919]"
+                      className="inline-flex h-12 items-center justify-center rounded-full border border-white/20 text-sm font-semibold text-white"
                     >
                       Sign in
                     </Link>

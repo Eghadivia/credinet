@@ -32,12 +32,14 @@ const serviceCards = [
     copy: 'Instant top up',
     className: 'bg-[#fff2c6] text-[#131313]',
     content: (
-      <img
-        src="/assets/images/home-2/mtv.png"
-        alt=""
-        aria-hidden="true"
-        className="h-13 w-24 object-contain"
-      />
+      <div className="flex h-14 w-28 shrink-0 items-center justify-center self-center">
+        <img
+          src="/assets/images/home-2/mtv.png"
+          alt=""
+          aria-hidden="true"
+          className="h-10 w-24 object-contain"
+        />
+      </div>
     ),
   },
   {
@@ -46,12 +48,14 @@ const serviceCards = [
     copy: 'Renewed',
     className: 'bg-gradient-to-r from-[#c26bff] to-[#9333ea] text-white',
     content: (
-      <img
-        src="/assets/images/home-2/dstv.png"
-        alt=""
-        aria-hidden="true"
-        className="h-14 w-14 object-contain"
-      />
+      <div className="flex h-16 w-16 shrink-0 items-center justify-center self-center rounded-full bg-white/85">
+        <img
+          src="/assets/images/home-2/dstv.png"
+          alt=""
+          aria-hidden="true"
+          className="h-7 w-11 object-contain"
+        />
+      </div>
     ),
   },
   {
@@ -60,12 +64,14 @@ const serviceCards = [
     copy: 'Active 30 days',
     className: 'bg-gradient-to-r from-[#66d2ff] to-[#2ca9f4] text-white',
     content: (
-      <img
-        src="/assets/images/home-2/wifi.png"
-        alt=""
-        aria-hidden="true"
-        className="h-14 w-14 object-contain"
-      />
+      <div className="flex h-16 w-16 shrink-0 items-center justify-center self-center rounded-full bg-[#0a9be6]/35">
+        <img
+          src="/assets/images/home-2/wifi.png"
+          alt=""
+          aria-hidden="true"
+          className="h-8 w-8 object-contain"
+        />
+      </div>
     ),
   },
   {
@@ -74,12 +80,14 @@ const serviceCards = [
     copy: 'avg delivery time',
     className: 'bg-gradient-to-br from-[#ff909a] to-[#ff686d] text-white',
     content: (
-      <img
-        src="/assets/images/home-2/electercity.png"
-        alt=""
-        aria-hidden="true"
-        className="h-12 w-12 object-contain"
-      />
+      <div className="flex h-12 w-12 shrink-0 items-center justify-center self-center rounded-full bg-[#ffd84d]">
+        <img
+          src="/assets/images/home-2/electercity.png"
+          alt=""
+          aria-hidden="true"
+          className="h-7 w-7 object-contain"
+        />
+      </div>
     ),
   },
 ];
@@ -93,7 +101,7 @@ function ServiceCard({
 }: (typeof serviceCards)[number]) {
   return (
     <article className={`rounded-[28px] p-5 shadow-[0_18px_50px_rgba(72,84,159,0.12)] ${className}`}>
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex min-h-[130px] items-center justify-between gap-4">
         <div>
           <p className="text-sm font-medium opacity-90">{eyebrow}</p>
           <h3 className="mt-2 text-3xl font-black leading-none">{title}</h3>
@@ -145,21 +153,17 @@ export default function Home2Hero() {
           </div>
 
           <div className="relative">
-            <div className="grid gap-5 xl:grid-cols-[0.9fr_1.1fr_0.72fr]">
-              <div className="relative order-1 flex min-h-[280px] items-end justify-center xl:order-none xl:min-h-[560px]">
+            <div className="grid gap-5 xl:grid-cols-[0.9fr_1.1fr_0.84fr]">
+              <div className="relative order-1 hidden min-h-[280px] items-end justify-center md:flex xl:order-none xl:min-h-[560px]">
                 <img
                   src="/assets/images/home-2/business-man.png"
                   alt="CrediNet customer"
-                  className="relative z-10 h-auto max-h-[440px] w-full max-w-[340px] -translate-y-[4.25rem] object-contain sm:-translate-y-[5.25rem] lg:-translate-y-[6.25rem] xl:max-h-[560px] xl:max-w-[380px]"
+                  className="relative z-10 h-auto max-h-[440px] w-full max-w-[340px] -translate-y-[7.25rem] object-contain sm:-translate-y-[8.25rem] lg:-translate-y-[9.25rem] xl:max-h-[560px] xl:max-w-[380px]"
                 />
-                <img
-                  src="/assets/images/phone.png"
-                  alt="CrediNet app phone"
-                  className="absolute left-1/2 top-10 z-20 w-24 -translate-x-[85%] rounded-[22px] shadow-[0_16px_40px_rgba(131,79,255,0.2)] sm:w-28 xl:top-14 xl:w-30"
-                />
+               
               </div>
 
-              <div className="order-3 xl:order-none">
+              <div className="order-2 xl:order-none">
                 <div className="rounded-[34px] bg-white p-6 shadow-[0_30px_90px_rgba(56,70,138,0.14)] sm:p-8">
                   <p className="text-[15px] font-medium uppercase text-[#7d7d89]">
                     Payment
@@ -208,7 +212,7 @@ export default function Home2Hero() {
                 </div>
               </div>
 
-              <div className="order-2 grid content-start gap-5 sm:grid-cols-2 xl:order-none xl:grid-cols-1">
+              <div className="order-3 grid content-start gap-5 sm:grid-cols-2 xl:order-none xl:grid-cols-1">
                 {serviceCards.slice(0, 3).map((card) => (
                   <ServiceCard key={card.title} {...card} />
                 ))}

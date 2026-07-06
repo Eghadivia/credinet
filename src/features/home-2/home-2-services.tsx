@@ -8,31 +8,31 @@ const services = [
   {
     title: 'Data Bundles',
     copy: 'Affordable daily, weekly and monthly plans.',
-    image: '/assets/images/home-2/Service2.png',
+    image: '/assets/images/home-2/Service3.png',
     badgeIcon: '/assets/images/home-2/s2.png',
   },
   {
     title: 'Electricity Bills',
     copy: 'Pay prepaid and postpaid meter bills in seconds.',
-    image: '/assets/images/home-2/Service3.png',
+    image: '/assets/images/home-2/Service4.png',
     badgeIcon: '/assets/images/home-2/s3.png',
   },
   {
     title: 'Cable TV Renewal',
     copy: 'Renew DStv, GOtv and Startimes subscriptions.',
-    image: '/assets/images/home-2/Service4.png',
+    image: '/assets/images/home-2/Service5.png',
     badgeIcon: '/assets/images/home-2/s6.png',
   },
   {
     title: '24/7 Service',
     copy: 'Recharge and pay bills anytime, even at midnight.',
-    image: '/assets/images/home-2/Service5.png',
+    image: '/assets/images/home-2/Service23.png',
     badgeIcon: '/assets/images/home-2/s5.png',
   },
   {
     title: 'Trusted Support',
     copy: 'Quick help whenever a transaction needs attention.',
-    image: '/assets/images/home-2/Service6.png',
+    image: '/assets/images/home-2/Service24.png',
     badgeIcon: '/assets/images/home-2/s4.png',
   },
 ];

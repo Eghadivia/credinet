@@ -15,7 +15,7 @@ const footerGroups = [
 
 export default function Home2Footer() {
   return (
-    <footer className="bg-[#dedede] px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-18">
+    <footer className="bg-[#0B014B] px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-18">
       <div className="mx-auto grid max-w-[1120px] gap-12 lg:grid-cols-[1.2fr_2fr] lg:gap-16">
         <div className="max-w-[320px]">
           <img
@@ -23,7 +23,7 @@ export default function Home2Footer() {
             alt="CrediNet"
             className="h-12 w-auto"
           />
-          <p className="mt-8 text-[1.05rem] leading-8 text-[#2a2a2a]">
+          <p className="mt-8 text-[1.05rem] leading-8 text-white">
             A smarter way to recharge, pay bills and stay connected.
           </p>
         </div>
@@ -31,13 +31,13 @@ export default function Home2Footer() {
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
           {footerGroups.map((group) => (
             <div key={group.title}>
-              <h3 className="text-[1.1rem] font-black text-[#171717]">
+              <h3 className="text-[1.1rem] font-black text-white">
                 {group.title}
               </h3>
-              <ul className="mt-6 space-y-5 text-[1.05rem] text-[#2a2a2a]">
+              <ul className="mt-6 space-y-5 text-[1.05rem] text-white">
                 {group.links.map((link) => (
                   <li key={link}>
-                    <a href="#" className="transition hover:text-[#ff4d54]">
+                    <a href="#" className="transition hover:text-[#ffd7f2]">
                       {link}
                     </a>
                   </li>
