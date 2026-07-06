@@ -82,7 +82,7 @@ export default function Home2Services() {
           <p className="text-xs font-black uppercase tracking-[0.4em] text-[#151515] sm:text-sm">
             Our Services
           </p>
-          <h2 className="mx-auto mt-5 max-w-[760px] text-[2.5rem] font-black leading-[1.02] tracking-[-0.05em] text-[#111111] sm:text-[3.4rem] lg:text-[4.2rem]">
+          <h2 className="mx-auto mt-5 max-w-[760px] text-[2.35rem] font-black leading-[1.02] tracking-[-0.05em] text-[#111111] sm:text-[3rem] lg:text-[40px]">
             Recharge has never felt this good.
           </h2>
         </div>

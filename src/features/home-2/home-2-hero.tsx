@@ -32,12 +32,12 @@ const serviceCards = [
     copy: 'Instant top up',
     className: 'bg-[#fff2c6] text-[#131313]',
     content: (
-      <div className="flex h-14 w-28 shrink-0 items-center justify-center self-center">
+      <div className="flex h-14 w-24 shrink-0 items-center justify-center self-center">
         <img
           src="/assets/images/home-2/mtv.png"
           alt=""
           aria-hidden="true"
-          className="h-10 w-24 object-contain"
+          className="h-9 w-20 object-contain"
         />
       </div>
     ),
@@ -126,7 +126,7 @@ export default function Home2Hero() {
             <div className="inline-flex rounded-full border border-[#dfb8ff] bg-[#f8ecff] px-6 py-3 text-xs font-black uppercase tracking-[0.28em] text-[#1c1c1c]">
               All utility bills in one place
             </div>
-            <h1 className="mt-8 text-[3.4rem] font-black leading-[0.92] tracking-[-0.06em] text-black sm:text-[4.75rem] lg:text-[6.4rem]">
+            <h1 className="mt-8 text-[3.3rem] font-black leading-[0.92] tracking-[-0.06em] text-black sm:text-[4.25rem] lg:text-[78px]">
               Top up.
               <br />
               Power on.

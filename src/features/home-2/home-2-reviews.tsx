@@ -82,7 +82,7 @@ export default function Home2Reviews() {
           <p className="text-xs font-black uppercase tracking-[0.42em] text-[#181818] sm:text-sm">
             Reviews
           </p>
-          <h2 className="mx-auto mt-5 max-w-[760px] text-[2.35rem] font-black leading-[1.02] tracking-[-0.05em] text-[#111111] sm:text-[3.2rem] lg:text-[4rem]">
+          <h2 className="mx-auto mt-5 max-w-[760px] text-[2.35rem] font-black leading-[1.02] tracking-[-0.05em] text-[#111111] sm:text-[3rem] lg:text-[40px]">
             Customers love us.
           </h2>
         </div>

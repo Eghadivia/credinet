@@ -40,7 +40,7 @@ export default function Home2Faq() {
           <p className="text-xs font-black uppercase tracking-[0.42em] text-[#181818] sm:text-sm">
             FAQ
           </p>
-          <h2 className="mx-auto mt-5 max-w-[760px] text-[2.35rem] font-black leading-[1.02] tracking-[-0.05em] text-[#111111] sm:text-[3.2rem] lg:text-[4rem]">
+          <h2 className="mx-auto mt-5 max-w-[760px] text-[2.35rem] font-black leading-[1.02] tracking-[-0.05em] text-[#111111] sm:text-[3rem] lg:text-[40px]">
             Quick answers.
           </h2>
         </div>
@@ -65,7 +65,7 @@ export default function Home2Faq() {
         </div>
 
         <div className="mx-auto mt-14 max-w-[950px] rounded-[30px] bg-black px-6 py-14 text-center text-white shadow-[0_24px_60px_rgba(0,0,0,0.12)] sm:px-10 sm:py-18 lg:mt-16 lg:rounded-[32px]">
-          <h3 className="text-[2.4rem] font-black leading-[1.02] tracking-[-0.05em] sm:text-[3.1rem]">
+          <h3 className="text-[2.35rem] font-black leading-[1.02] tracking-[-0.05em] sm:text-[3rem] lg:text-[40px]">
             Get on Credinet today.
           </h3>
           <p className="mx-auto mt-5 max-w-[620px] text-base leading-8 text-white/80 sm:text-lg">
