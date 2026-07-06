@@ -244,13 +244,71 @@ section {
   animation: u-bg-sweep 12s ease-in-out infinite;
 }
 
+@keyframes u-how-step {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.u-anim-how-step {
+  opacity: 0;
+  animation: u-how-step 820ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes u-flow-line {
+  0% {
+    opacity: 0.55;
+    transform: scaleX(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 0.55;
+    transform: scaleX(0.92);
+  }
+}
+
+.u-anim-flow-line {
+  transform-origin: left center;
+  animation: u-flow-line 2.3s ease-in-out infinite;
+}
+
+@keyframes u-flow-arrow {
+  0% {
+    opacity: 0.35;
+    transform: translate3d(-10px, 0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(3px, 0, 0);
+  }
+  100% {
+    opacity: 0.35;
+    transform: translate3d(-10px, 0, 0);
+  }
+}
+
+.u-anim-flow-arrow {
+  animation: u-flow-arrow 1.9s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
   .u-anim-floaty,
   .u-anim-bg-sweep,
-  .u-anim-glow {
+  .u-anim-glow,
+  .u-anim-how-step,
+  .u-anim-flow-line,
+  .u-anim-flow-arrow {
     animation: none !important;
   }
   .u-reveal {

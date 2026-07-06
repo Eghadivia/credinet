@@ -28,7 +28,7 @@ export default function Home2Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-10 text-[15px] font-medium text-white lg:flex">
+        <nav className="hidden items-center gap-10 text-[19px] font-medium text-white lg:flex">
           {navLinks.map((link) => (
             <a key={link.href} href={link.href} className="transition hover:text-[#ffd7f2]">
               {link.label}

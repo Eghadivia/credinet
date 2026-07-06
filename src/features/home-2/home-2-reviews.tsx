@@ -76,13 +76,13 @@ export default function Home2Reviews() {
   }, [api]);
 
   return (
-    <section className="bg-[#dddddd] px-4 py-18 sm:px-6 sm:py-22 lg:px-8 lg:py-24">
+    <section className="bg-[#0B014B] px-4 py-18 sm:px-6 sm:py-22 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-[1160px]">
         <div className="text-center">
-          <p className="text-xs font-black uppercase tracking-[0.42em] text-[#181818] sm:text-sm">
+          <p className="text-xs font-black uppercase tracking-[0.42em] text-white/70 sm:text-sm">
             Reviews
           </p>
-          <h2 className="mx-auto mt-5 max-w-[760px] text-[2.35rem] font-black leading-[1.02] tracking-[-0.05em] text-[#111111] sm:text-[3rem] lg:text-[40px]">
+          <h2 className="mx-auto mt-5 max-w-[760px] text-[2.35rem] font-black leading-[1.02] tracking-[-0.05em] text-white sm:text-[3rem] lg:text-[40px]">
             Customers love us.
           </h2>
         </div>
@@ -115,7 +115,7 @@ export default function Home2Reviews() {
                 aria-label={`Go to review group ${index + 1}`}
                 onClick={() => api?.scrollTo(index)}
                 className={`h-4 w-4 rounded-full transition ${
-                  selectedIndex === index ? 'bg-white' : 'bg-[#aaaaaa]'
+                  selectedIndex === index ? 'bg-white' : 'bg-white/30'
                 }`}
               />
             ))}

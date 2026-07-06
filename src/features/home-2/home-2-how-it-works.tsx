@@ -27,14 +27,18 @@ function StepItem({
   copy,
   icon,
   isLast,
-}: (typeof steps)[number] & { isLast: boolean }) {
+  index,
+}: (typeof steps)[number] & { isLast: boolean; index: number }) {
   return (
-    <div className="relative flex flex-col items-center text-center">
+    <div
+      className="u-anim-how-step relative flex flex-col items-center text-center"
+      style={{ animationDelay: `${index * 180}ms` }}
+    >
       <div className="relative">
-        <span className="absolute -left-4 top-0 inline-flex h-8 min-w-8 items-center justify-center rounded-full bg-[#8833FB] px-2 text-xs font-black text-white shadow-[0_8px_18px_rgba(136,51,251,0.28)] sm:-left-2">
+        <span className="u-anim-glow absolute -left-4 top-0 inline-flex h-8 min-w-8 items-center justify-center rounded-full bg-[#8833FB] px-2 text-xs font-black text-white shadow-[0_8px_18px_rgba(136,51,251,0.28)] sm:-left-2">
           {number}
         </span>
-        <div className="flex h-36 w-36 items-center justify-center rounded-full bg-gradient-to-r from-[#FE494A] to-[#8833FB] shadow-[0_20px_50px_rgba(136,51,251,0.18)] sm:h-40 sm:w-40 lg:h-44 lg:w-44">
+        <div className="u-anim-floaty flex h-36 w-36 items-center justify-center rounded-full bg-gradient-to-r from-[#FE494A] to-[#8833FB] shadow-[0_20px_50px_rgba(136,51,251,0.18)] sm:h-40 sm:w-40 lg:h-44 lg:w-44">
           <img
             src={icon}
             alt=""
@@ -46,8 +50,8 @@ function StepItem({
 
       {!isLast ? (
         <div className="my-6 flex items-center justify-center lg:absolute lg:left-[72%] lg:top-[72px] lg:my-0 lg:w-[44%] xl:w-[52%]">
-          <div className="hidden h-px flex-1 border-t border-dashed border-[#8e8e94] lg:block" />
-          <ArrowRight className="hidden h-4 w-4 text-[#6b6b6f] lg:block" />
+          <div className="u-anim-flow-line hidden h-px flex-1 border-t border-dashed border-[#8e8e94] lg:block" />
+          <ArrowRight className="u-anim-flow-arrow hidden h-4 w-4 text-[#6b6b6f] lg:block" />
         </div>
       ) : null}
 
@@ -82,6 +86,7 @@ export default function Home2HowItWorks() {
             <StepItem
               key={step.number}
               {...step}
+              index={index}
               isLast={index === steps.length - 1}
             />
           ))}

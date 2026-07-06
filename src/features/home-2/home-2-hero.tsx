@@ -1,29 +1,37 @@
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
 const featureItems = ['Secure & Encrypted', 'Instant Payments', '24/7 Support'];
 
 const statItems = [
   {
-    value: '12M+',
+    value: 1,
+    suffix: 'M+',
     label: 'Successful transactions',
     icon: '/assets/images/home-2/b1.png',
   },
   {
-    value: '850K',
+    value: 30,
+    suffix: 'k',
     label: 'Happy customers',
     icon: '/assets/images/home-2/b2.png',
   },
   {
-    value: '99.98%',
+    value: 99.98,
+    suffix: '%',
+    decimals: 2,
     label: 'Platform uptime',
     icon: '/assets/images/home-2/b3.png',
   },
   {
-    value: '₦240B',
-    label: 'Bills processed',
+    value: 100,
+    suffix: 'M',
+    label: 'Airtime and bills processed',
     icon: '/assets/images/home-2/b4.png',
   },
-];
+] as const;
 
 const serviceCards = [
   {
@@ -113,6 +121,77 @@ function ServiceCard({
   );
 }
 
+function CounterStat({
+  value,
+  suffix = '',
+  decimals = 0,
+}: {
+  value: number;
+  suffix?: string;
+  decimals?: number;
+}) {
+  const [displayValue, setDisplayValue] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+  const ref = useRef<HTMLParagraphElement | null>(null);
+
+  useEffect(() => {
+    const node = ref.current;
+
+    if (!node) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!hasStarted) {
+      return;
+    }
+
+    const duration = 1400;
+    const start = performance.now();
+    let frame = 0;
+
+    const updateValue = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const easedProgress = 1 - (1 - progress) ** 3;
+
+      setDisplayValue(value * easedProgress);
+
+      if (progress < 1) {
+        frame = window.requestAnimationFrame(updateValue);
+      }
+    };
+
+    frame = window.requestAnimationFrame(updateValue);
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [hasStarted, value]);
+
+  return (
+    <p
+      ref={ref}
+      className="text-4xl font-black tracking-[-0.04em] text-[#7c3aed]"
+    >
+      {displayValue.toFixed(decimals)}
+      {suffix}
+    </p>
+  );
+}
+
 export default function Home2Hero() {
   return (
     <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(212,240,255,0.95),_rgba(232,235,255,0.95)_42%,_rgba(223,247,246,0.9)_100%)]">
@@ -121,7 +200,7 @@ export default function Home2Hero() {
       <div className="pointer-events-none absolute inset-y-0 right-0 w-[28%] bg-[linear-gradient(225deg,rgba(208,255,244,0.35)_0%,rgba(208,255,244,0)_60%)]" />
 
       <div className="relative mx-auto max-w-[1360px] px-4 pb-18 pt-10 sm:px-6 lg:px-8 lg:pb-28 lg:pt-14">
-        <div className="grid items-start gap-10 xl:grid-cols-[1.05fr_1.35fr]">
+        <div className="grid items-start gap-10 xl:grid-cols-[1fr_1.43fr]">
           <div className="max-w-[520px] pt-4 lg:pt-14">
             <div className="inline-flex rounded-full border border-[#dfb8ff] bg-[#f8ecff] px-6 py-3 text-xs font-black uppercase tracking-[0.28em] text-[#1c1c1c]">
               All utility bills in one place
@@ -152,19 +231,18 @@ export default function Home2Hero() {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="grid gap-5 xl:grid-cols-[0.9fr_1.1fr_0.84fr]">
-              <div className="relative order-1 hidden min-h-[280px] items-end justify-center md:flex xl:order-none xl:min-h-[560px]">
+          <div className="relative xl:pl-3">
+            <div className="grid gap-5 xl:grid-cols-[0.96fr_1.1fr_0.9fr]">
+              <div className="relative order-1 hidden min-h-[280px] items-end justify-center md:flex xl:order-none xl:min-h-[590px]">
                 <img
                   src="/assets/images/home-2/business-man.png"
                   alt="CrediNet customer"
-                  className="relative z-10 h-auto max-h-[440px] w-full max-w-[340px] -translate-y-[7.25rem] object-contain sm:-translate-y-[8.25rem] lg:-translate-y-[9.25rem] xl:max-h-[560px] xl:max-w-[380px]"
+                  className="relative z-20 h-auto max-h-[440px] w-full max-w-[340px] -translate-y-[7.25rem] object-contain sm:-translate-y-[8.25rem] lg:-translate-y-[9.25rem] xl:max-h-[600px] xl:max-w-[410px] xl:translate-x-[1.25rem]"
                 />
-               
               </div>
 
               <div className="order-2 xl:order-none">
-                <div className="rounded-[34px] bg-white p-6 shadow-[0_30px_90px_rgba(56,70,138,0.14)] sm:p-8">
+                <div className="relative z-10 rounded-[34px] bg-white p-6 shadow-[0_30px_90px_rgba(56,70,138,0.14)] sm:p-8">
                   <p className="text-[15px] font-medium uppercase text-[#7d7d89]">
                     Payment
                   </p>
@@ -249,9 +327,11 @@ export default function Home2Hero() {
                   />
                 </div>
                 <div>
-                  <p className="text-4xl font-black tracking-[-0.04em] text-[#7c3aed]">
-                    {item.value}
-                  </p>
+                  <CounterStat
+                    value={item.value}
+                    suffix={item.suffix}
+                    decimals={item.decimals}
+                  />
                   <p className="mt-1 text-lg leading-7 text-[#191919]">
                     {item.label}
                   </p>
