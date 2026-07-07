@@ -35,10 +35,10 @@ function StepItem({
       style={{ animationDelay: `${index * 180}ms` }}
     >
       <div className="relative">
-        <span className="u-anim-glow absolute -left-4 top-0 inline-flex h-8 min-w-8 items-center justify-center rounded-full bg-[#8833FB] px-2 text-xs font-black text-white shadow-[0_8px_18px_rgba(136,51,251,0.28)] sm:-left-2">
+        <span className="u-anim-badge-drift absolute -left-4 top-0 inline-flex h-8 min-w-8 items-center justify-center rounded-full bg-[#8833FB] px-2 text-xs font-black text-white shadow-[0_8px_18px_rgba(136,51,251,0.28)] sm:-left-2">
           {number}
         </span>
-        <div className="u-anim-floaty flex h-36 w-36 items-center justify-center rounded-full bg-gradient-to-r from-[#FE494A] to-[#8833FB] shadow-[0_20px_50px_rgba(136,51,251,0.18)] sm:h-40 sm:w-40 lg:h-44 lg:w-44">
+        <div className="u-anim-how-circle flex h-36 w-36 items-center justify-center rounded-full bg-gradient-to-r from-[#FE494A] to-[#8833FB] shadow-[0_20px_50px_rgba(136,51,251,0.18)] sm:h-40 sm:w-40 lg:h-44 lg:w-44">
           <img
             src={icon}
             alt=""

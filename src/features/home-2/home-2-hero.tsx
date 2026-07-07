@@ -161,7 +161,7 @@ function CounterStat({
       return;
     }
 
-    const duration = 1400;
+    const duration = 2800;
     const start = performance.now();
     let frame = 0;
 
