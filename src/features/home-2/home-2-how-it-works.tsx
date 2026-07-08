@@ -50,8 +50,12 @@ function StepItem({
 
       {!isLast ? (
         <div className="my-6 flex items-center justify-center lg:absolute lg:left-[72%] lg:top-[72px] lg:my-0 lg:w-[44%] xl:w-[52%]">
-          <div className="u-anim-flow-line hidden h-px flex-1 border-t border-dashed border-[#8e8e94] lg:block" />
-          <ArrowRight className="u-anim-flow-arrow hidden h-4 w-4 text-[#6b6b6f] lg:block" />
+          <div className="u-anim-flow-line hidden h-0 flex-1 border-t-2 border-dashed border-[#8e8e94] lg:block" />
+          <ArrowRight
+            strokeWidth={2.75}
+            absoluteStrokeWidth
+            className="u-anim-flow-arrow hidden h-5 w-5 text-[#6b6b6f] lg:block"
+          />
         </div>
       ) : null}
 

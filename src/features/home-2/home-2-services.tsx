@@ -44,7 +44,7 @@ function ServiceCard({
   badgeIcon,
 }: (typeof services)[number]) {
   return (
-    <article className="overflow-hidden rounded-[28px] bg-white shadow-[0_20px_60px_rgba(41,56,121,0.10)]">
+    <article className="overflow-hidden rounded-[28px] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.08)] transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#fffdfd] hover:shadow-[0_28px_80px_rgba(0,0,0,0.14)]">
       <div className="relative h-[190px] overflow-hidden sm:h-[220px]">
         <img
           src={image}
