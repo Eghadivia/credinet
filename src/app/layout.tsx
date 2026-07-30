@@ -15,7 +15,13 @@ import { ReactQueryProvider } from "@/providers/ReactQueryProvider";
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-jakarta",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -30,7 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={` ${jakarta.variable} font-sans`}>
+      <body className={`${inter.variable} ${jakarta.variable} font-sans`}>
         <NextTopLoader
           color="#EE1C25"
           initialPosition={0.08}

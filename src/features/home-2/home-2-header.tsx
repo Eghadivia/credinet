@@ -42,7 +42,7 @@ export default function Home2Header() {
           </Link>
           <Link
             href="/signup"
-            className="inline-flex h-13 items-center justify-center rounded-full bg-gradient-to-r from-[#ff4b4b] via-[#ee4cae] to-[#7c3aed] px-8 text-[15px] font-semibold text-white shadow-[0_12px_32px_rgba(164,55,255,0.22)]"
+            className="inline-flex h-13 items-center justify-center rounded-full bg-gradient-to-r from-[#ff4b4b] via-[#ee4cae] to-[#7c3aed] px-8 text-[15px] font-extrabold tracking-[-0.01em] text-white shadow-[0_12px_32px_rgba(164,55,255,0.22)]"
           >
             Create Account
           </Link>
@@ -54,7 +54,7 @@ export default function Home2Header() {
           </Link>
           <Link
             href="/signup"
-            className="inline-flex h-10 items-center justify-center rounded-full bg-gradient-to-r from-[#ff4b4b] via-[#ee4cae] to-[#7c3aed] px-4 text-sm font-semibold text-white"
+            className="inline-flex h-10 items-center justify-center rounded-full bg-gradient-to-r from-[#ff4b4b] via-[#ee4cae] to-[#7c3aed] px-4 text-sm font-extrabold tracking-[-0.01em] text-white"
           >
             Create Account
           </Link>
@@ -94,7 +94,7 @@ export default function Home2Header() {
                   <SheetClose asChild>
                     <Link
                       href="/login"
-                      className="inline-flex h-12 items-center justify-center rounded-full border border-white/20 text-sm font-semibold text-white"
+                      className="inline-flex h-12 items-center justify-center rounded-full border border-white/20 text-sm font-extrabold tracking-[-0.01em] text-white"
                     >
                       Sign in
                     </Link>
@@ -102,7 +102,7 @@ export default function Home2Header() {
                   <SheetClose asChild>
                     <Link
                       href="/signup"
-                      className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-[#ff4b4b] via-[#ee4cae] to-[#7c3aed] text-sm font-semibold text-white"
+                      className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-[#ff4b4b] via-[#ee4cae] to-[#7c3aed] text-sm font-extrabold tracking-[-0.01em] text-white"
                     >
                       Create Account
                     </Link>

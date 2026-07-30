@@ -8,11 +8,18 @@ import {
   Headphones,
   LockKeyhole,
   ShieldCheck,
-  Smartphone,
   Zap,
 } from 'lucide-react';
 
-const slides = Array.from({ length: 4 }, (_, index) => ({
+const slideImages = [
+  '/assets/images/home-2/slider_0.png',
+  '/assets/images/home-2/slider_1.png',
+  '/assets/images/home-2/slider_2.png',
+  '/assets/images/home-2/slider_3.png',
+  '/assets/images/home-2/slider_4.png',
+];
+
+const slides = slideImages.map((image, index) => ({
   id: index + 1,
   eyebrow: 'All your payments in one place',
   title: (
@@ -24,8 +31,8 @@ const slides = Array.from({ length: 4 }, (_, index) => ({
   ),
   copy:
     'Pay airtime, data, electricity and cable bills with one clean, secure dashboard built for everyday Nigerians.',
-  image: '/assets/images/home-2/hero-phone-woman-wide.png',
-  imageAlt: 'Smiling CrediNet customer using her phone',
+  image,
+  imageAlt: `CrediNet service slide ${index + 1}`,
 }));
 
 const serviceCards = [
@@ -167,13 +174,13 @@ export default function Home2Hero() {
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row xl:justify-start">
               <Link
                 href="/signup"
-                className="inline-flex h-14 items-center justify-center rounded-full bg-gradient-to-r from-[#ff4656] via-[#ee3fa0] to-[#862bf5] px-9 text-base font-semibold text-white shadow-[0_15px_34px_rgba(169,53,230,0.24)]"
+                className="inline-flex h-14 items-center justify-center rounded-full bg-gradient-to-r from-[#ff4656] via-[#ee3fa0] to-[#862bf5] px-9 text-base font-extrabold tracking-[-0.01em] text-white shadow-[0_15px_34px_rgba(169,53,230,0.24)]"
               >
                 Create Account
               </Link>
               <Link
                 href="/login"
-                className="inline-flex h-14 items-center justify-center rounded-full bg-white px-10 text-base font-semibold text-[#7025e8] shadow-[0_12px_30px_rgba(46,48,100,0.08)]"
+                className="inline-flex h-14 items-center justify-center rounded-full bg-white px-10 text-base font-extrabold tracking-[-0.01em] text-[#7025e8] shadow-[0_12px_30px_rgba(46,48,100,0.08)]"
               >
                 Sign in
               </Link>
@@ -181,25 +188,13 @@ export default function Home2Hero() {
           </div>
 
           <div className="relative mx-auto min-w-0 w-full max-w-[520px]">
-            <div className="relative h-[430px] overflow-hidden rounded-[34px] bg-[#ded3ff] shadow-[0_24px_65px_rgba(87,68,155,0.13)] sm:h-[510px] xl:h-[530px]">
+            <div className="relative h-auto overflow-hidden rounded-[34px] bg-[#ded3ff] shadow-[0_24px_65px_rgba(87,68,155,0.13)]">
               <img
                 key={`image-${slide.id}`}
                 src={slide.image}
                 alt={slide.imageAlt}
-                className="h-full w-full object-cover object-center"
+                className="block h-auto w-full"
               />
-
-              <div className="absolute left-6 top-7 z-10 max-w-[170px] sm:left-9 sm:top-12">
-                <div className="flex h-16 w-16 items-center justify-center rounded-[20px] bg-white/90 text-[#7b2cf1] shadow-[0_12px_30px_rgba(74,52,138,0.1)] backdrop-blur-sm">
-                  <Smartphone className="h-6 w-6" strokeWidth={2.2} />
-                </div>
-                <p className="mt-6 text-base font-bold text-[#15152d]">
-                  Airtime Top Up
-                </p>
-                <p className="mt-2 text-sm leading-6 text-[#5c5d78]">
-                  Instant top up for all networks
-                </p>
-              </div>
             </div>
 
             <button
@@ -289,7 +284,7 @@ export default function Home2Hero() {
 
               <button
                 type="button"
-                className="mt-7 flex h-14 w-full items-center justify-center rounded-full bg-gradient-to-r from-[#ff4656] via-[#ee3fa0] to-[#862bf5] text-base font-semibold text-white shadow-[0_14px_32px_rgba(169,53,230,0.2)]"
+                className="mt-7 flex h-14 w-full items-center justify-center rounded-full bg-gradient-to-r from-[#ff4656] via-[#ee3fa0] to-[#862bf5] text-base font-extrabold tracking-[-0.01em] text-white shadow-[0_14px_32px_rgba(169,53,230,0.2)]"
               >
                 Continue to Pay
               </button>
