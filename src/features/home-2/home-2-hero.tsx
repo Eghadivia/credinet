@@ -149,7 +149,7 @@ export default function Home2Hero() {
   return (
     <section
       aria-label="CrediNet payment services"
-      className="relative overflow-hidden bg-[#f8f8ff]"
+      className="relative overflow-hidden bg-[linear-gradient(90deg,#dff2ff_0%,#e5e5ff_52%,#defafa_100%)]"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >

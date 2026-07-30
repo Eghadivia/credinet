@@ -183,7 +183,7 @@ export default function Home2Reviews() {
   }, [api]);
 
   return (
-    <section className="relative overflow-hidden bg-[#f8f7ff] px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#e4d7ff_0%,#f6f2ff_42%,#f1eaff_68%,#ddccff_100%)] px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
       <ReviewsBackground />
 
       <div className="relative z-10 mx-auto max-w-[1280px]">
