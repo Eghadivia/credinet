@@ -35,8 +35,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${jakarta.variable} font-sans`}>
+    <html lang="en" className={`${inter.variable} ${jakarta.variable}`}>
+      <body>
         <NextTopLoader
           color="#EE1C25"
           initialPosition={0.08}
