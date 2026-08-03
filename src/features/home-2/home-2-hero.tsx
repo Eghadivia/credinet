@@ -266,7 +266,7 @@ export default function Home2Hero() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_52%_30%,rgba(204,186,255,0.2),transparent_29%),radial-gradient(circle_at_95%_32%,rgba(203,249,255,0.35),transparent_25%)]" />
 
       <div className="relative mx-auto max-w-[1600px] px-4 pb-7 pt-10 sm:px-6 sm:pt-12 lg:px-8 xl:px-10 xl:pb-9 xl:pt-16">
-        <div className="grid min-w-0 items-start gap-10 xl:grid-cols-[0.93fr_1.15fr_1.12fr] xl:gap-6 2xl:gap-8">
+        <div className="grid min-w-0 items-start gap-10 xl:grid-cols-[1fr_1fr_1fr] xl:gap-0 2xl:gap-0">
           <div
             key={`copy-${slide.id}`}
             className="mx-auto min-w-0 w-full max-w-[560px] text-center xl:mx-0 xl:text-left"
@@ -300,7 +300,7 @@ export default function Home2Hero() {
           <div className="relative mx-auto min-w-0 w-full max-w-[520px] xl:max-w-[390px] 2xl:max-w-[420px]">
             <div
               ref={carouselRef}
-              className="aspect-[941/1393] touch-pan-y overflow-hidden rounded-[34px] bg-[#ded3ff] shadow-[0_24px_65px_rgba(87,68,155,0.13)] [transform:translateZ(0)]"
+              className="aspect-[941/1393] h-[539px] mx-auto touch-pan-y overflow-hidden rounded-[34px] bg-[#ded3ff] shadow-[0_24px_65px_rgba(87,68,155,0.13)] [transform:translateZ(0)]"
             >
               <div className="flex h-full cursor-grab select-none [backface-visibility:hidden] [will-change:transform] active:cursor-grabbing">
                 {slides.map((item) => (
