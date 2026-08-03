@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import useEmblaCarousel from 'embla-carousel-react';
 import {
   ChevronLeft,
   ChevronRight,
@@ -209,27 +210,51 @@ function ServiceCard({
 
 export default function Home2Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [carouselRef, carouselApi] = useEmblaCarousel({
+    align: 'start',
+    duration: 28,
+    loop: true,
+  });
   const slide = slides[activeSlide];
 
   useEffect(() => {
-    if (isPaused) {
+    if (!carouselApi) return;
+
+    const updateActiveSlide = () => {
+      setActiveSlide(carouselApi.selectedScrollSnap());
+    };
+
+    updateActiveSlide();
+    carouselApi.on('select', updateActiveSlide);
+    carouselApi.on('reInit', updateActiveSlide);
+
+    return () => {
+      carouselApi.off('select', updateActiveSlide);
+      carouselApi.off('reInit', updateActiveSlide);
+    };
+  }, [carouselApi]);
+
+  useEffect(() => {
+    if (
+      !carouselApi ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
       return;
     }
 
-    const timer = window.setInterval(() => {
-      setActiveSlide((current) => (current + 1) % slides.length);
+    const timer = window.setTimeout(() => {
+      carouselApi.scrollNext();
     }, 6000);
 
-    return () => window.clearInterval(timer);
-  }, [isPaused]);
+    return () => window.clearTimeout(timer);
+  }, [activeSlide, carouselApi]);
 
   const showPrevious = () => {
-    setActiveSlide((current) => (current - 1 + slides.length) % slides.length);
+    carouselApi?.scrollPrev();
   };
 
   const showNext = () => {
-    setActiveSlide((current) => (current + 1) % slides.length);
+    carouselApi?.scrollNext();
   };
 
   return (
@@ -237,13 +262,11 @@ export default function Home2Hero() {
       <section
         aria-label="CrediNet payment services"
         className="relative overflow-hidden bg-[linear-gradient(90deg,#dff2ff_0%,#e5e5ff_52%,#defafa_100%)]"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
       >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_52%_30%,rgba(204,186,255,0.2),transparent_29%),radial-gradient(circle_at_95%_32%,rgba(203,249,255,0.35),transparent_25%)]" />
 
       <div className="relative mx-auto max-w-[1600px] px-4 pb-7 pt-10 sm:px-6 sm:pt-12 lg:px-8 xl:px-10 xl:pb-9 xl:pt-16">
-        <div className="grid min-w-0 items-center gap-10 xl:grid-cols-[0.93fr_1.15fr_1.12fr] xl:gap-9 2xl:gap-12">
+        <div className="grid min-w-0 items-start gap-10 xl:grid-cols-[0.93fr_1.15fr_1.12fr] xl:gap-9 2xl:gap-12">
           <div
             key={`copy-${slide.id}`}
             className="mx-auto min-w-0 w-full max-w-[560px] text-center xl:mx-0 xl:text-left"
@@ -274,14 +297,23 @@ export default function Home2Hero() {
             </div>
           </div>
 
-          <div className="relative mx-auto min-w-0 w-full max-w-[520px]">
-            <div className="relative h-auto overflow-hidden rounded-[34px] bg-[#ded3ff] shadow-[0_24px_65px_rgba(87,68,155,0.13)]">
-              <img
-                key={`image-${slide.id}`}
-                src={slide.image}
-                alt={slide.imageAlt}
-                className="block h-auto w-full"
-              />
+          <div className="relative mx-auto min-w-0 w-full max-w-[520px] xl:max-w-[340px]">
+            <div
+              ref={carouselRef}
+              className="aspect-[941/1393] touch-pan-y overflow-hidden rounded-[34px] bg-[#ded3ff] shadow-[0_24px_65px_rgba(87,68,155,0.13)] [transform:translateZ(0)]"
+            >
+              <div className="flex h-full cursor-grab select-none [backface-visibility:hidden] [will-change:transform] active:cursor-grabbing">
+                {slides.map((item) => (
+                  <div key={item.id} className="h-full min-w-0 shrink-0 grow-0 basis-full">
+                    <img
+                      src={item.image}
+                      alt={item.imageAlt}
+                      draggable={false}
+                      className="h-full w-full object-cover [backface-visibility:hidden]"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
 
             <button
@@ -313,7 +345,7 @@ export default function Home2Hero() {
                   role="tab"
                   aria-label={`Show slide ${index + 1}`}
                   aria-selected={activeSlide === index}
-                  onClick={() => setActiveSlide(index)}
+                  onClick={() => carouselApi?.scrollTo(index)}
                   className={`h-2.5 rounded-full transition-all ${
                     activeSlide === index
                       ? 'w-6 bg-[#8332ef]'

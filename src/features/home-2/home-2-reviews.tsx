@@ -62,7 +62,7 @@ function ReviewCard({
     .replace('.', '');
 
   return (
-    <article className="flex h-full min-h-[330px] flex-col rounded-[28px] border border-[#272342] bg-[#111026]/95 px-7 py-7 shadow-[0_22px_55px_rgba(0,0,0,0.28)] backdrop-blur-sm sm:min-h-[360px] sm:px-8 sm:py-8">
+    <article className="flex h-full min-h-[330px] flex-col rounded-[28px] border border-[#272342] bg-[#111026] px-7 py-7 shadow-[0_22px_55px_rgba(0,0,0,0.28)] [backface-visibility:hidden] sm:min-h-[360px] sm:px-8 sm:py-8">
       <div className="flex items-center justify-between gap-5">
         <span className="flex h-13 w-13 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#8b4dff] to-[#6725ea] text-white shadow-[0_9px_24px_rgba(119,51,238,0.3)]">
           <Quote className="h-5 w-5 fill-current" aria-hidden="true" />
@@ -92,6 +92,7 @@ function ReviewCard({
             alt=""
             width={56}
             height={56}
+            draggable={false}
             className="h-14 w-14 shrink-0 rounded-full object-cover"
           />
         ) : (
@@ -182,6 +183,54 @@ export default function Home2Reviews() {
     };
   }, [api]);
 
+  React.useEffect(() => {
+    if (!api) return;
+
+    let autoplayTimer: number | undefined;
+
+    const stopAutoplay = () => {
+      if (autoplayTimer !== undefined) {
+        window.clearTimeout(autoplayTimer);
+        autoplayTimer = undefined;
+      }
+    };
+
+    const startAutoplay = () => {
+      stopAutoplay();
+
+      if (
+        document.hidden ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ) {
+        return;
+      }
+
+      autoplayTimer = window.setTimeout(() => api.scrollNext(), 5000);
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+    };
+
+    startAutoplay();
+    api.on('pointerDown', stopAutoplay);
+    api.on('select', startAutoplay);
+    api.on('settle', startAutoplay);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      stopAutoplay();
+      api.off('pointerDown', stopAutoplay);
+      api.off('select', startAutoplay);
+      api.off('settle', startAutoplay);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [api]);
+
   return (
     <section className="relative overflow-hidden bg-[radial-gradient(circle_at_50%_45%,#0d0928_0%,#07071d_46%,#050518_100%)] px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
       <ReviewsBackground />
@@ -206,12 +255,14 @@ export default function Home2Reviews() {
         <div className="mt-12 lg:mt-16">
           <Carousel
             setApi={setApi}
+            className="touch-pan-y select-none"
             opts={{
               align: 'start',
               loop: true,
+              duration: 28,
             }}
           >
-            <CarouselContent className="-ml-5">
+            <CarouselContent className="-ml-5 cursor-grab [backface-visibility:hidden] [will-change:transform] active:cursor-grabbing motion-reduce:transition-none">
               {reviews.map((review, index) => (
                 <CarouselItem
                   key={`${review.name}-${review.quote}`}
