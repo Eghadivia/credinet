@@ -62,9 +62,9 @@ function ReviewCard({
     .replace('.', '');
 
   return (
-    <article className="flex h-full min-h-[330px] flex-col rounded-[28px] border border-white/80 bg-white/95 px-7 py-7 shadow-[0_20px_55px_rgba(75,50,160,0.11)] backdrop-blur-sm sm:min-h-[360px] sm:px-8 sm:py-8">
+    <article className="flex h-full min-h-[330px] flex-col rounded-[28px] border border-[#272342] bg-[#111026]/95 px-7 py-7 shadow-[0_22px_55px_rgba(0,0,0,0.28)] backdrop-blur-sm sm:min-h-[360px] sm:px-8 sm:py-8">
       <div className="flex items-center justify-between gap-5">
-        <span className="flex h-13 w-13 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#7138ed] to-[#4511d7] text-white shadow-[0_9px_22px_rgba(87,39,219,0.24)]">
+        <span className="flex h-13 w-13 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#8b4dff] to-[#6725ea] text-white shadow-[0_9px_24px_rgba(119,51,238,0.3)]">
           <Quote className="h-5 w-5 fill-current" aria-hidden="true" />
         </span>
         <div
@@ -81,11 +81,11 @@ function ReviewCard({
         </div>
       </div>
 
-      <p className="mt-8 flex-1 text-[1.05rem] font-medium leading-[1.8] text-[#15152b] sm:text-[1.1rem]">
+      <p className="mt-8 flex-1 text-[1.05rem] font-medium leading-[1.8] text-[#f1effa] sm:text-[1.1rem]">
         &ldquo;{quote}&rdquo;
       </p>
 
-      <div className="mt-7 flex items-center gap-4 border-t border-[#ece9f6] pt-5">
+      <div className="mt-7 flex items-center gap-4 border-t border-[#26223f] pt-5">
         {image ? (
           <Image
             src={image}
@@ -102,11 +102,11 @@ function ReviewCard({
             {initials}
           </span>
         )}
-        <p className="text-lg font-extrabold tracking-[-0.02em] text-[#111126]">
+        <p className="text-lg font-extrabold tracking-[-0.02em] text-white">
           {name}
         </p>
         <Quote
-          className="ml-auto h-12 w-12 rotate-180 fill-[#eee9ff] text-[#eee9ff]"
+          className="ml-auto h-12 w-12 rotate-180 fill-[#342b65] text-[#342b65]"
           aria-hidden="true"
         />
       </div>
@@ -117,13 +117,13 @@ function ReviewCard({
 function ReviewsBackground() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      <div className="absolute -left-[170px] -top-[190px] h-[570px] w-[430px] rounded-[50%] bg-gradient-to-br from-[#cfb9ff] via-[#b99df7] to-[#eee8ff] opacity-90 blur-[1px]" />
-      <div className="absolute left-[7%] top-0 h-[180px] w-[260px] opacity-45 [background-image:radial-gradient(#c7b5f7_2px,transparent_2px)] [background-size:26px_26px]" />
-      <div className="absolute -bottom-[180px] -right-[150px] h-[430px] w-[430px] rounded-full bg-[#d6c3ff]/45 blur-[90px]" />
-      <div className="absolute left-[28%] top-[35%] h-[300px] w-[420px] rounded-full bg-[#e8dfff]/60 blur-[95px]" />
+      <div className="absolute -left-[190px] -top-[220px] h-[570px] w-[430px] rounded-[50%] bg-gradient-to-br from-[#5920c6] via-[#351071] to-[#10092d] opacity-75 blur-[2px]" />
+      <div className="absolute left-[7%] top-0 h-[180px] w-[260px] opacity-45 [background-image:radial-gradient(#5c31ca_1.5px,transparent_1.5px)] [background-size:22px_22px]" />
+      <div className="absolute -bottom-[200px] -right-[170px] h-[430px] w-[430px] rounded-full bg-[#331070]/25 blur-[90px]" />
+      <div className="absolute left-[30%] top-[38%] h-[300px] w-[420px] rounded-full bg-[#30106b]/10 blur-[110px]" />
 
       <svg
-        className="absolute -right-24 -top-8 h-[520px] w-[580px] text-[#c8b3fa] opacity-25"
+        className="absolute -right-24 -top-8 h-[520px] w-[580px] text-[#6334d4] opacity-30"
         viewBox="0 0 580 520"
         fill="none"
       >
@@ -140,7 +140,7 @@ function ReviewsBackground() {
       </svg>
 
       <svg
-        className="absolute -bottom-28 -left-20 h-[330px] w-[760px] text-[#bda3f5] opacity-35"
+        className="absolute -bottom-28 -left-20 h-[330px] w-[760px] text-[#5427b5] opacity-35"
         viewBox="0 0 760 330"
         fill="none"
       >
@@ -183,21 +183,21 @@ export default function Home2Reviews() {
   }, [api]);
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#e4d7ff_0%,#f6f2ff_42%,#f1eaff_68%,#ddccff_100%)] px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+    <section className="relative overflow-hidden bg-[radial-gradient(circle_at_50%_45%,#0d0928_0%,#07071d_46%,#050518_100%)] px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
       <ReviewsBackground />
 
       <div className="relative z-10 mx-auto max-w-[1280px]">
         <div className="text-center">
           <div className="flex items-center justify-center gap-4">
-            <span className="h-px w-12 bg-[#c6b6ef] sm:w-16" />
-            <p className="text-xs font-extrabold uppercase tracking-[0.36em] text-[#5623d8] sm:text-sm">
+            <span className="h-px w-12 bg-[#6940c8] sm:w-16" />
+            <p className="text-xs font-extrabold uppercase tracking-[0.36em] text-[#8a58f5] sm:text-sm">
               Reviews
             </p>
-            <span className="h-px w-12 bg-[#c6b6ef] sm:w-16" />
+            <span className="h-px w-12 bg-[#6940c8] sm:w-16" />
           </div>
-          <h2 className="mx-auto mt-5 max-w-[760px] text-[2.4rem] font-extrabold leading-[1.08] tracking-[-0.055em] text-[#0d0c28] sm:text-[3.3rem] lg:text-[4rem]">
+          <h2 className="mx-auto mt-5 max-w-[760px] text-[2.4rem] font-extrabold leading-[1.08] tracking-[-0.055em] text-white sm:text-[3.3rem] lg:text-[4rem]">
             Customers{' '}
-            <span className="bg-gradient-to-r from-[#7334ee] to-[#4715d8] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#b56cff] to-[#8c3dff] bg-clip-text text-transparent">
               love us.
             </span>
           </h2>
@@ -232,8 +232,8 @@ export default function Home2Reviews() {
                 onClick={() => api?.scrollTo(index)}
                 className={`h-3.5 w-3.5 rounded-full transition-all duration-300 ${
                   selectedIndex === index
-                    ? 'scale-110 bg-[#6029df]'
-                    : 'bg-[#d8cff3] hover:bg-[#bba9ea]'
+                    ? 'scale-110 bg-[#7843ed]'
+                    : 'bg-[#342a5a] hover:bg-[#503b88]'
                 }`}
               />
             ))}

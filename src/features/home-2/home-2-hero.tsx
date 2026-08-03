@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import {
   ChevronLeft,
@@ -90,6 +90,92 @@ const trustItems = [
   },
 ];
 
+const statItems = [
+  {
+    value: 1,
+    suffix: 'M+',
+    decimals: 0,
+    label: 'Successful transactions',
+    icon: '/assets/images/home-2/b1.png',
+  },
+  {
+    value: 30,
+    suffix: 'k',
+    decimals: 0,
+    label: 'Happy customers',
+    icon: '/assets/images/home-2/b2.png',
+  },
+  {
+    value: 99.98,
+    suffix: '%',
+    decimals: 2,
+    label: 'Platform uptime',
+    icon: '/assets/images/home-2/b3.png',
+  },
+  {
+    value: 100,
+    suffix: 'M',
+    decimals: 0,
+    label: 'Airtime and bills processed',
+    icon: '/assets/images/home-2/b4.png',
+  },
+];
+
+function AnimatedStatValue({
+  value,
+  suffix,
+  decimals,
+}: Pick<(typeof statItems)[number], 'value' | 'suffix' | 'decimals'>) {
+  const [displayValue, setDisplayValue] = useState(0);
+  const valueRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    const element = valueRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+
+        observer.disconnect();
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          setDisplayValue(value);
+          return;
+        }
+
+        const duration = 4000;
+        const startTime = performance.now();
+
+        const animate = (currentTime: number) => {
+          const progress = Math.min((currentTime - startTime) / duration, 1);
+          const easedProgress = 1 - Math.pow(1 - progress, 3);
+          setDisplayValue(value * easedProgress);
+
+          if (progress < 1) {
+            window.requestAnimationFrame(animate);
+          }
+        };
+
+        window.requestAnimationFrame(animate);
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [value]);
+
+  return (
+    <p
+      ref={valueRef}
+      className="text-2xl font-black leading-none tracking-[-0.04em] text-[#7c3aed] sm:text-[1.7rem]"
+    >
+      {displayValue.toFixed(decimals)}{suffix}
+    </p>
+  );
+}
+
 function ServiceCard({
   eyebrow,
   label,
@@ -147,12 +233,13 @@ export default function Home2Hero() {
   };
 
   return (
-    <section
-      aria-label="CrediNet payment services"
-      className="relative overflow-hidden bg-[linear-gradient(90deg,#dff2ff_0%,#e5e5ff_52%,#defafa_100%)]"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
+    <>
+      <section
+        aria-label="CrediNet payment services"
+        className="relative overflow-hidden bg-[linear-gradient(90deg,#dff2ff_0%,#e5e5ff_52%,#defafa_100%)]"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_52%_30%,rgba(204,186,255,0.2),transparent_29%),radial-gradient(circle_at_95%_32%,rgba(203,249,255,0.35),transparent_25%)]" />
 
       <div className="relative mx-auto max-w-[1600px] px-4 pb-7 pt-10 sm:px-6 sm:pt-12 lg:px-8 xl:px-10 xl:pb-9 xl:pt-16">
@@ -326,7 +413,45 @@ export default function Home2Hero() {
             })}
           </div>
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+
+      <section
+        aria-label="CrediNet platform statistics"
+        className="bg-[#f8f8ff] px-4 py-5 sm:px-6 sm:py-6 lg:px-8"
+      >
+        <div className="mx-auto max-w-[1360px] rounded-[30px] bg-white px-5 py-6 shadow-[0_18px_55px_rgba(63,68,132,0.08)] sm:px-7 lg:px-9">
+          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4 xl:gap-4">
+            {statItems.map((item, index) => (
+              <div
+                key={item.label}
+                className={`flex items-center gap-4 px-3 py-2 ${
+                  index > 0 ? 'xl:border-l xl:border-[#eceaf4] xl:pl-7' : ''
+                }`}
+              >
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f5edff] sm:h-16 sm:w-16">
+                  <img
+                    src={item.icon}
+                    alt=""
+                    aria-hidden="true"
+                    className="h-7 w-7 object-contain sm:h-8 sm:w-8"
+                  />
+                </div>
+                <div>
+                  <AnimatedStatValue
+                    value={item.value}
+                    suffix={item.suffix}
+                    decimals={item.decimals}
+                  />
+                  <p className="mt-1 text-xs font-medium leading-5 text-[#22223a] sm:text-sm">
+                    {item.label}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
