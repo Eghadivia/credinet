@@ -20,7 +20,7 @@ export default function Home2Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0B014B] backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/home-2" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <img
             src="/assets/images/newlogo.png"
             alt="CrediNet"
