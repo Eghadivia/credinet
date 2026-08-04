@@ -1,7 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { Star } from 'lucide-react';
+import Image from 'next/image';
+import { Quote, Star } from 'lucide-react';
 import {
   Carousel,
   CarouselApi,
@@ -13,14 +14,17 @@ const reviews = [
   {
     name: 'Tunde A.',
     quote: 'Credinet makes my data and electricity payments stress-free.',
+    image: '/assets/images/home-2/iamge-1.png',
   },
   {
     name: 'Sarah K.',
     quote: 'Fast, clean and reliable. I use it for all my family top-ups.',
+    image: '/assets/images/home-2/imge-2.png',
   },
   {
     name: 'Ayo M.',
     quote: 'The transaction history helps me track everything easily.',
+    image: '/assets/images/home-2/imge-3.png',
   },
   {
     name: 'Mariam O.',
@@ -32,23 +36,127 @@ const reviews = [
   },
 ];
 
+const avatarGradients = [
+  'from-[#fff0c8] to-[#ffd66d] text-[#6b4300]',
+  'from-[#f6d9ff] to-[#d8b4fe] text-[#5b247a]',
+  'from-[#dbeafe] to-[#93c5fd] text-[#153e75]',
+  'from-[#dcfce7] to-[#86efac] text-[#14532d]',
+  'from-[#ffe4e6] to-[#fda4af] text-[#881337]',
+];
+
 function ReviewCard({
   name,
   quote,
+  image,
+  index,
 }: {
   name: string;
   quote: string;
+  image?: string;
+  index: number;
 }) {
+  const initials = name
+    .split(' ')
+    .map((part) => part.charAt(0))
+    .join('')
+    .replace('.', '');
+
   return (
-    <article className="h-full rounded-[28px] bg-white px-8 py-8 shadow-[0_18px_50px_rgba(46,46,46,0.08)] sm:px-9 sm:py-9">
-      <div className="mb-6 flex gap-1 text-[#f7b719]">
-        {Array.from({ length: 5 }).map((_, index) => (
-          <Star key={index} className="h-5 w-5 fill-current" />
-        ))}
+    <article className="flex h-full min-h-[330px] flex-col rounded-[28px] border border-[#272342] bg-[#111026] px-7 py-7 shadow-[0_22px_55px_rgba(0,0,0,0.28)] [backface-visibility:hidden] sm:min-h-[360px] sm:px-8 sm:py-8">
+      <div className="flex items-center justify-between gap-5">
+        <span className="flex h-13 w-13 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#8b4dff] to-[#6725ea] text-white shadow-[0_9px_24px_rgba(119,51,238,0.3)]">
+          <Quote className="h-5 w-5 fill-current" aria-hidden="true" />
+        </span>
+        <div
+          className="flex gap-1 text-[#ffb703]"
+          aria-label="5 out of 5 stars"
+        >
+          {Array.from({ length: 5 }).map((_, starIndex) => (
+            <Star
+              key={starIndex}
+              className="h-[19px] w-[19px] fill-current stroke-current"
+              aria-hidden="true"
+            />
+          ))}
+        </div>
       </div>
-      <p className="text-[1.1rem] leading-8 text-[#191919]">&quot;{quote}&quot;</p>
-      <p className="mt-8 text-xl font-black text-[#111111]">{name}</p>
+
+      <p className="mt-8 flex-1 text-[1.05rem] font-medium leading-[1.8] text-[#f1effa] sm:text-[1.1rem]">
+        &ldquo;{quote}&rdquo;
+      </p>
+
+      <div className="mt-7 flex items-center gap-4 border-t border-[#26223f] pt-5">
+        {image ? (
+          <Image
+            src={image}
+            alt=""
+            width={56}
+            height={56}
+            draggable={false}
+            className="h-14 w-14 shrink-0 rounded-full object-cover"
+          />
+        ) : (
+          <span
+            className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-sm font-extrabold ${avatarGradients[index % avatarGradients.length]}`}
+            aria-hidden="true"
+          >
+            {initials}
+          </span>
+        )}
+        <p className="text-lg font-extrabold tracking-[-0.02em] text-white">
+          {name}
+        </p>
+        <Quote
+          className="ml-auto h-12 w-12 rotate-180 fill-[#342b65] text-[#342b65]"
+          aria-hidden="true"
+        />
+      </div>
     </article>
+  );
+}
+
+function ReviewsBackground() {
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+      <div className="absolute -left-[190px] -top-[220px] h-[570px] w-[430px] rounded-[50%] bg-gradient-to-br from-[#5920c6] via-[#351071] to-[#10092d] opacity-75 blur-[2px]" />
+      <div className="absolute left-[7%] top-0 h-[180px] w-[260px] opacity-45 [background-image:radial-gradient(#5c31ca_1.5px,transparent_1.5px)] [background-size:22px_22px]" />
+      <div className="absolute -bottom-[200px] -right-[170px] h-[430px] w-[430px] rounded-full bg-[#331070]/25 blur-[90px]" />
+      <div className="absolute left-[30%] top-[38%] h-[300px] w-[420px] rounded-full bg-[#30106b]/10 blur-[110px]" />
+
+      <svg
+        className="absolute -right-24 -top-8 h-[520px] w-[580px] text-[#6334d4] opacity-30"
+        viewBox="0 0 580 520"
+        fill="none"
+      >
+        {Array.from({ length: 14 }).map((_, index) => (
+          <path
+            key={index}
+            d={`M ${125 + index * 10} -20 C ${35 + index * 8} 150, ${
+              145 + index * 7
+            } 330, ${600 + index * 6} ${305 + index * 12}`}
+            stroke="currentColor"
+            strokeWidth="1.4"
+          />
+        ))}
+      </svg>
+
+      <svg
+        className="absolute -bottom-28 -left-20 h-[330px] w-[760px] text-[#5427b5] opacity-35"
+        viewBox="0 0 760 330"
+        fill="none"
+      >
+        {Array.from({ length: 13 }).map((_, index) => (
+          <path
+            key={index}
+            d={`M -20 ${205 + index * 9} C 170 ${75 + index * 5}, 310 ${
+              310 + index * 3
+            }, 790 ${55 + index * 9}`}
+            stroke="currentColor"
+            strokeWidth="1.4"
+          />
+        ))}
+      </svg>
+    </div>
   );
 }
 
@@ -75,47 +183,108 @@ export default function Home2Reviews() {
     };
   }, [api]);
 
+  React.useEffect(() => {
+    if (!api) return;
+
+    let autoplayTimer: number | undefined;
+
+    const stopAutoplay = () => {
+      if (autoplayTimer !== undefined) {
+        window.clearTimeout(autoplayTimer);
+        autoplayTimer = undefined;
+      }
+    };
+
+    const startAutoplay = () => {
+      stopAutoplay();
+
+      if (
+        document.hidden ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ) {
+        return;
+      }
+
+      autoplayTimer = window.setTimeout(() => api.scrollNext(), 5000);
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+    };
+
+    startAutoplay();
+    api.on('pointerDown', stopAutoplay);
+    api.on('select', startAutoplay);
+    api.on('settle', startAutoplay);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      stopAutoplay();
+      api.off('pointerDown', stopAutoplay);
+      api.off('select', startAutoplay);
+      api.off('settle', startAutoplay);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [api]);
+
   return (
-    <section className="bg-[#0B014B] px-4 py-18 sm:px-6 sm:py-22 lg:px-8 lg:py-24">
-      <div className="mx-auto max-w-[1160px]">
+    <section className="relative overflow-hidden bg-[radial-gradient(circle_at_50%_45%,#0d0928_0%,#07071d_46%,#050518_100%)] px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+      <ReviewsBackground />
+
+      <div className="relative z-10 mx-auto max-w-[1280px]">
         <div className="text-center">
-          <p className="text-xs font-black uppercase tracking-[0.42em] text-white/70 sm:text-sm">
-            Reviews
-          </p>
-          <h2 className="mx-auto mt-5 max-w-[760px] text-[2.35rem] font-black leading-[1.02] tracking-[-0.05em] text-white sm:text-[3rem] lg:text-[40px]">
-            Customers love us.
+          <div className="flex items-center justify-center gap-4">
+            <span className="h-px w-12 bg-[#6940c8] sm:w-16" />
+            <p className="text-xs font-extrabold uppercase tracking-[0.36em] text-[#8a58f5] sm:text-sm">
+              Reviews
+            </p>
+            <span className="h-px w-12 bg-[#6940c8] sm:w-16" />
+          </div>
+          <h2 className="mx-auto mt-5 max-w-[760px] text-[2.4rem] font-extrabold leading-[1.08] tracking-[-0.055em] text-white sm:text-[3.3rem] lg:text-[4rem]">
+            Customers{' '}
+            <span className="bg-gradient-to-r from-[#b56cff] to-[#8c3dff] bg-clip-text text-transparent">
+              love us.
+            </span>
           </h2>
         </div>
 
-        <div className="mt-12 lg:mt-14">
+        <div className="mt-12 lg:mt-16">
           <Carousel
             setApi={setApi}
+            className="touch-pan-y select-none"
             opts={{
               align: 'start',
               loop: true,
+              duration: 28,
             }}
           >
-            <CarouselContent className="-ml-5">
-              {reviews.map((review) => (
+            <CarouselContent className="-ml-5 cursor-grab [backface-visibility:hidden] [will-change:transform] active:cursor-grabbing motion-reduce:transition-none">
+              {reviews.map((review, index) => (
                 <CarouselItem
                   key={`${review.name}-${review.quote}`}
-                  className="pl-5 md:basis-1/2 xl:basis-1/3"
+                  className="pl-5 md:basis-1/2 lg:basis-1/3"
                 >
-                  <ReviewCard {...review} />
+                  <ReviewCard {...review} index={index} />
                 </CarouselItem>
               ))}
             </CarouselContent>
           </Carousel>
 
-          <div className="mt-8 flex items-center justify-center gap-3">
+          <div className="mt-10 flex items-center justify-center gap-3">
             {Array.from({ length: snapCount }).map((_, index) => (
               <button
                 key={index}
                 type="button"
                 aria-label={`Go to review group ${index + 1}`}
                 onClick={() => api?.scrollTo(index)}
-                className={`h-4 w-4 rounded-full transition ${
-                  selectedIndex === index ? 'bg-white' : 'bg-white/30'
+                className={`h-3.5 w-3.5 rounded-full transition-all duration-300 ${
+                  selectedIndex === index
+                    ? 'scale-110 bg-[#7843ed]'
+                    : 'bg-[#342a5a] hover:bg-[#503b88]'
                 }`}
               />
             ))}
