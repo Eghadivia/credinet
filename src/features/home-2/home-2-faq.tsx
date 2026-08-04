@@ -18,31 +18,33 @@ import {
 const faqs = [
   {
     question: 'Do I need a wallet to use CrediNet?',
-    answer: 'No. You can pay securely and complete each transaction directly.',
+    answer:
+      'No. CrediNet uses a direct payment model, so you can pay securely for each transaction without maintaining a wallet balance. Simply choose your service, complete your payment, and we’ll process your request instantly.',
     icon: WalletCards,
   },
   {
     question: 'How fast are purchases delivered?',
-    answer: 'Most airtime, data and bill payments are processed instantly.',
+    answer:
+      'Most transactions are completed within seconds after successful payment confirmation. If a service provider experiences a temporary delay, we’ll automatically retry the transaction and keep you updated on its status.',
     icon: Zap,
   },
   {
     question: 'Which networks are supported?',
     answer:
-      'MTN, Airtel, Glo, 9mobile, DStv, GOtv, Startimes and electricity providers.',
+      'CrediNet supports all major Nigerian service providers, including MTN, Airtel, Glo, and 9mobile. We also support leading electricity distribution companies and popular cable TV providers such as DStv, GOtv, and StarTimes.',
     icon: ChartNoAxesColumnIncreasing,
-  },
-  {
-    question: 'Can I pay electricity bills?',
-    answer:
-      'Yes. CrediNet supports prepaid and postpaid electricity bill payments.',
-    icon: ReceiptText,
   },
   {
     question: 'Is my card information safe?',
     answer:
-      'Yes. Payments are processed through secure payment infrastructure.',
+      'Yes. Your payments are securely processed, and CrediNet verifies every transaction before delivering your service. We do not store your card details, ensuring your payment information remains protected.',
     icon: ShieldCheck,
+  },
+  {
+    question: 'What happens if my transaction fails?',
+    answer:
+      'If a transaction cannot be completed due to a service provider issue, CrediNet automatically retries the request. If all retry attempts are unsuccessful, your payment is automatically refunded to your original payment method, and you’ll receive notifications throughout the process.',
+    icon: ReceiptText,
   },
 ];
 
